@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/uikit.min.css" th:href="@{css/uikit.min.css}">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .modal1, .modal2, .modal3 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            height: 500px;
+        }
+
+        .close1, .close2, .close3 {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close1:hover, .close2:hover, .close3:hover,
+        .close1:focus, .close2:focus, .close3:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .shelf{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .container img {
+            width: 100px;
+            height: auto;
+        }
+
+
+        .container #btn1, #btn2, #btn3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: #555;
+            color: white;
+            font-size: 50%;
+            padding: 12px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .container  #btn1, #btn2, #btn3 :hover {
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2>Recenzje</h2>
+
+<div class="shelf">
+<div class="container">
+    <img th:src="@{/img/TTB.jpg}" alt="TTB" style="width:100%"/>
+    <button id="btn1">Time to burn "Is.Land"</button>
+</div>
+<div class="container">
+    <img th:src="@{/img/Isis_Panopticon.jpg}" alt="ISIS" style="width:100%"/>
+    <button id="btn2">ISIS "Panopticon"</button>
+</div>
+<div class="container">
+    <img th:src="@{/img/Bir.jpg}" alt="Birds in row" style="width:100%"/>
+    <button id="btn3">Birds in row "You, me and the violance"</button>
+</div>
+</div>
+
+<div id="myModal1" class="modal1">
+    <div class="modal-content">
+        <span class="close1">&times;</span>
+        <iframe width="100%" height="90%" th:src="@{/text/First.html}"></iframe>
+    </div>
+</div>
+<div id="myModal2" class="modal2">
+    <div class="modal-content">
+        <span class="close2">&times;</span>
+        <iframe width="100%" height="90%" th:src="@{/text/Second.html}"></iframe>
+    </div>
+</div>
+<div id="myModal3" class="modal3">
+    <div class="modal-content">
+        <span class="close3">&times;</span>
+        <iframe width="100%" height="90%" th:src="@{/text/Third.html}"></iframe>
+    </div>
+</div>
+
+<a th:href="@{/comments}" class="uk-button uk-button-secondary uk-width-1-1" th:text="#{comments}"></a>
+
+<script>
+    var modal1 = document.getElementById("myModal1");
+    var modal2 = document.getElementById("myModal2");
+    var modal3 = document.getElementById("myModal3");
+
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+
+    var span1 = document.getElementsByClassName("close1")[0];
+    var span2 = document.getElementsByClassName("close2")[0];
+    var span3 = document.getElementsByClassName("close3")[0];
+
+    btn1.onclick = function () {
+        modal1.style.display = "block";
+    }
+    btn2.onclick = function () {
+        modal2.style.display = "block";
+    }
+    btn3.onclick = function () {
+        modal3.style.display = "block";
+    }
+
+    span1.onclick = function () {
+        modal1.style.display = "none";
+    }
+    span2.onclick = function () {
+        modal2.style.display = "none";
+    }
+    span3.onclick = function () {
+        modal3.style.display = "none";
+    }
+
+</script>
+</body>
+</html>

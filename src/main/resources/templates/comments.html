@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::.container})}">
+<body>
+
+<div class="container">
+    <h2>Komentarze</h2>
+    <table class="uk-table uk-table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Login</th>
+            <th>Czego dotyczy Twój komentarz</th>
+            <th>Twój komentarz</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="comment : ${comments}">
+            <td th:text="${comment.id}"></td>
+            <td th:text="${comment.login}"></td>
+            <td th:text="${comment.theme}"></td>
+            <td th:text="${comment.comment}"></td>
+            <td style="width:250px" >
+                <a th:href="@{comments/edit/{id}(id=${comment.id})}"><input class="uk-button uk-button-primary" value="Edytuj" type="button"></a>
+                <a th:href="@{/comments/delete/{id}(id=${comment.id})}"><input class="uk-button uk-button-danger" value="Usuń" type="button" hidden></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <a th:href="@{comments/new}"><input style="background-color: #32d296; color: white" class="uk-button" value="Dodaj komentarz" type="button"></a>
+    </div>
+</div>
+
+</body>
+</html>
